@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Лабораторная работа №5</title>
+    </head>
+    <body>
+        <script>
+            function $Zadanie_1() {                                  
+                var matr = [];  
+                var N = parseInt(prompt('Введите количество строк')); 
+                var M = parseInt(prompt('Введите количество столбцов')); 
+                var mix_el = 0;
+                var new_list = [];
+                var man_elem = Number.POSITIVE_INFINITY;
+                var a = 0;
+        
+                
+
+                for (let i=0; i<N; i++) {
+                    matr[i]=[];
+                    for(let j=0; j<M; j++) {
+                        a = parseInt(prompt('Введите '+(j+1)+'-й элемент ' + (i+1) + '-го столбца'));
+                        matr[i].push(a) ; 
+                        
+                    }
+                                                 
+                }
+
+                for (let i = 0; i < N; i++) {
+                    console.log(matr[i].join('\t'));
+
+                }
+
+                for(let i=0; i<N; i++){
+                    man_elem = Number.POSITIVE_INFINITY;
+                    for(let j=0; j<M; j++){
+                        if(matr[i][j]<man_elem){
+                            man_elem=matr[i][j];
+                        }
+                        new_list.push(man_elem);
+                    }
+
+                for(let i=0; i<new_list.length;i++){
+                    if(new_list[i] > mix_el){
+                        mix_el = new_list[i];
+                    }
+                }
+            }
+                console.log(mix_el);
+                            
+
+            }
+        </script>
+        <script>
+            function $Zadanie_2(){                                   
+                var matr = [];  
+                var M = parseInt(prompt('Введите разряд матрицы: ')) - 1;
+                var a = 0;
+                
+
+                for (let i=0; i<=M; i++) {
+                    matr[i]=[];
+                    for(let j=0; j<=M; j++) {
+                        a = parseInt(prompt('Введите '+(j+1)+'-й элемент ' + (i+1) + '-го столбца'));
+                        matr[i].push(a) ; 
+                        
+                    }
+                                                 
+                }
+
+                console.log('Исходная матрица')
+                for (let i = 0; i <= M; i++) {
+                    console.log(matr[i].join('\t'));
+
+                }
+
+                for(let i=0; i<=M; i++){
+                    for(let j=M-i; j<=M; j++){
+                        matr[i][j] = 0;
+                    }
+                } 
+
+                console.log('Ответ')
+                for (let i = 0; i <= M; i++) {
+                    console.log(matr[i].join('\t'));
+
+                }
+
+            }
+
+                
+        </script>
+        
+        <button onclick="$Zadanie_1()">Минимальный из максимальных</button>
+        <button onclick="$Zadanie_2()">Обнуление побочной диагонали</button>
+    </body>
+</html>

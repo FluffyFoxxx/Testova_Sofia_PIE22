@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Лабораторная работа №1</title>
+    </head>
+    <body>
+        <script>
+            function $Zadanie_1() {                                 //Дано трёхзначное число. Проверить истинность: 
+        var number = String(prompt("Введите число"));               //"Все цифры данного числа различны"
+        if (number[0] != number[1] && number[0] != number[2] &&number[1] != number[2]){
+            alert("Правда! Все цифры введённого числа различны!:))");
+        } else {
+            alert ('Ложь! В этом числе цифры повторяются:((');
+        }
+        }
+        </script>
+        <script>
+            function $Zadanie_2(){                                  //На числовой оси расположены точки A, B, C. 
+            var point_A = parseFloat(prompt('Введите точку А'));    //Определить какая из точек (B или C)
+            var point_B = parseFloat(prompt('Введите точку В'));    //ближе к точке А и вывести эту точку и её 
+            var point_C = parseFloat(prompt('Введите точку С'));    //расстояние от точки А.
+            var difference_AB = point_A - point_B;
+            var difference_AC = point_A - point_C;
+
+           
+
+            if (difference_AC < 0) {
+                difference_AC = -1 * difference_AC
+            }
+
+            if (difference_AB > difference_AC) {
+                alert('Точка С ближе к точке А, чем В. Длина отрезка АC =' + difference_AC);
+            } else if (difference_AC > difference_AB) {
+                alert('Точка B ближе к точке А, чем C. Длина отрезка АВ =' + difference_AB);
+            } else {
+                alert('Точки  В и С находятся на равном расстоянии от А, равном ' + difference_AB);
+            }
+            }
+        </script>
+        <script>
+            function $Zadanie_3(){          //Решить систему уравнений
+            var a = parseFloat(prompt('Введите а (4.27)'));
+            var b = parseFloat(prompt('введите b(1.39)'));
+            var x = parseFloat(prompt('Введите х(-4.51)'));
+            var y = 0
+
+            if (x <= -2) {
+                y = Math.sqrt(a * x ** 2 + b);
+            } else if (x > -2 && x <= 0){
+                y = Math.cos(1/(1 + Math.sqrt(a * (-1 * x))));
+            } else if (x > 0 && x <= 4){
+                y = Math.cos(1/(1 + Math.sqrt(a * x)));
+            } else {
+                y = Math.log(Math.abs(x + Math.sin (b * x)));
+            }
+
+            alert (y);
+
+            } 
+        </script>
+        <button onclick="$Zadanie_1()">Проверить все ли цифры в числе различны</button>
+        <button onclick="$Zadanie_2()">Найти самую близкую к А точку и расстояние между ними</button>
+        <button onclick="$Zadanie_3()">Решить систему уравнений</button>   
+    </body>
+</html>
+
+
+дан одномерный массив, первую половину отсортировать о возростанию, вторую по убыванию

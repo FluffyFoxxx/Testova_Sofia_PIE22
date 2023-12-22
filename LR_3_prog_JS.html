@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Лабораторная работа №1</title>
+    </head>
+    <body>
+        <script>
+            function $Zadanie_1() {                                  
+                var N = parseInt(prompt("Введите число N (N>1)")); 
+                var numbers_list = [];
+                var proverka = 1;
+                var i = 0;
+
+
+                for (let i=0; i<N; i++) {
+                    numbers_list[i] = parseInt(prompt('Введите '+(i+1)+'-й элемент'))
+                }
+
+                for (let i=1;i<N&&proverka==1;i++) {
+                    if (numbers_list[i-1] < numbers_list[i]) {
+                        proverka = 1;
+                    } else {
+                        proverka = 0;
+                    }
+                    }
+                    
+                if (proverka == 1) {
+                    alert ('Последовательность: ' + numbers_list + ' является возрастающей')
+                    alert('TRUE')
+                } else {
+                    alert ('Последовательность: ' + numbers_list + ' не является возрастающей')
+                    alert("FALSE")
+                }
+            }
+            
+        </script>
+
+        <script>
+            function $Zadanie_2() {
+                var N = parseInt(prompt("Введите число N (N>0)"));
+                var N1 = N + 1;
+                var fakt_list = [];
+                var summa = 0;
+                for (let i = 0; i<N; i++) {
+                    fakt_list[i] = 1
+                    N1 = N1 - 1;
+                    for (let n = N1; n>1; n--) {
+                        fakt_list[i] =  fakt_list[i] * n;                      
+                    }
+                    summa = summa + parseInt(fakt_list[i])
+                }
+                alert("Ответ:" + summa)
+                
+            }
+        </script>
+
+        <button onclick="$Zadanie_1()">Возрастает или нет?</button>
+        <button onclick="$Zadanie_2()">Сумма факториалов</button>
+ 
+    </body>
+</html>

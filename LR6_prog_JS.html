@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Лабораторная работа №6</title>
+    </head>
+    <body>
+        <script>
+            function $Zadanie_1() {
+                function $chetv(x, y){
+                if(x==0 && y==0){
+                    return 'Начало координат';
+                }else if(x>=0 && y>=0){
+                    return "1-я четверть";
+                } else if(x<=0 && y>=0){
+                    return '2-четверть';
+                } else if(x<=0 && y<=0){
+                    return '3-четверть';
+                } else if (x>=0 && y<=0){
+                    return '4-четверть'
+                }
+
+        }
+    }
+        </script>
+
+    <label for="xInput">Введите x: </label>
+    <input type="text" id="xInput" />
+    <br>
+    <label for="yInput">Введите y: </label>
+    <input type="text" id="yInput" />
+    <br>
+
+    <button onclick="$Zadanie_1(parseInt(document.getElementById('xInput').value), parseInt(document.getElementById('yInput').value))">Поиск четверти</button>
+    
+  
+    </body>
+</html>
+
+Пользователь вводит некое слово. Необходимо каждую букву заменить на следующую после неё букву в алфавите

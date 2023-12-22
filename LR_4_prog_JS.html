@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Лабораторная работа №4</title>
+    </head>
+    <body>
+        <script>
+            function $Zadanie_1() {
+                var N  = parseInt(prompt('Введите N: '));
+                var max_element = 0;
+                var list = [];
+
+                for (let i=0; i<N; i++) {
+                    list[i] = parseInt(prompt('Введите '+(i+1)+'-й элемент'));
+                }
+
+                for (let i=0; i<N; i=i+2 ) {
+                    if (max_element < list[i]){
+                        max_element = list[i];
+                    } 
+                }
+
+                alert(max_element)
+            }                                
+    
+        </script>
+
+        <script>
+            function $Zadanie_2() {
+                var N = parseInt(prompt('Введите количество элементов в массиве'));
+                var list = [];
+
+                for (let i=0; i<N; i++) {
+                    list[i] = parseInt(prompt('Введите '+(i+1)+'-й элемент'));
+                }
+
+                alert('Исходный массив: ' + list);
+
+                for (let i=N; i>0; i--){
+                    list[i] = list[i-1];
+                }
+                list[0] = 0;
+
+                list.pop()
+
+                alert('Результат: ' + list)
+            }                                  
+        </script>
+
+<script>
+    function $Zadanie_3() {
+        var N = parseInt(prompt('Введите количество элементов в массиве'));
+        var list = [];
+
+        for (let i=0; i<N; i++) {
+            list[i] = parseInt(prompt('Введите '+(i+1)+'-й элемент'));
+        }
+
+        alert('Исходный массив: ' + list);
+
+        list.unshift(0);
+        list.pop();
+
+        alert('Результат: ' + list)
+    }                                  
+
+
+</script>
+
+        <button onclick="$Zadanie_1()">Поиск максимального среди нечетных элементов</button>
+        <button onclick="$Zadanie_2()">Сдвиг вправо (циклом)</button>
+        <button onclick="$Zadanie_3()">Сдвиг вправо (встроенной функцией)</button>
+
+    </body>
+</html>
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Лабораторная работа №1</title>
+    </head>
+    <body>
+        <script>  
+            function $Sum() {           //Скрипт для сложения
+                var summand1 = parseInt(prompt("Введите первое слагаемое"));
+                var summand2 = parseInt(prompt("Введите второе слагаемое"));
+                var Sum = summand1 + summand2;
+                alert("Сумма чисел равна: " + Sum);
+            }
+        </script>
+        <script>
+            function $Difference() {    //Скрипт для вычитания
+                var reduced = parseInt(prompt("Введите уменьшаемое"));
+                var subtracted = parseInt(prompt("Введите вычитаемое"));
+                var Difference = reduced - subtracted;
+                alert("Разность чисел равна: " + Difference);
+            }
+        </script>
+        <script>
+            function $Product() {     //Скрипт для умножения
+                var multiplier1 = parseInt(prompt("Введите первый множитель"));
+                var multiplier2 = parseInt(prompt("Введите второй множитель"));
+                var Product = multiplier1 * multiplier2;
+                alert("Произведение чисел равно: " + Product);
+            }
+        </script>
+        <script>
+            function $Quotient() {     //Скрипт для деления
+                var divisible = parseInt(prompt("Введите делимое"));
+                var divisor = parseInt(prompt("Введите делитель"));
+                var Quotient = divisible / divisor;
+                alert("Частное от деления чисел равно: " + Quotient);
+            }
+        </script>
+        <script>
+            function $Remains() {     //Скрипт для нахождения остатка
+                var divisible_ost = parseInt(prompt("Введите делимое"));
+                var divisor_ost = parseInt(prompt("Введите делитель"));
+                var Remains = divisible_ost % divisor_ost;
+                alert("Остаток от деления чисел: " + Remains);
+            }
+        </script>
+        
+        <button onclick="$Sum()">Посчитать сумму чисел</button>
+        <button onclick="$Difference()">Посчитать разность чисел</button>
+        <button onclick="$Product()">Посчитать произведение чисел</button>
+        <button onclick="$Quotient()">Посчитать частное от деления чисел</button>
+        <button onclick="$Remains()">Посчитать остаток от деления</button>
+    </body>
+</html>

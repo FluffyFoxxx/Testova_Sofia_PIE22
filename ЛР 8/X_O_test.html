@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 5 Website Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <style>
+    .fakeimg {
+      height: 200px;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .question-container {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .question {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .answer-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+    }
+
+    .answer {
+      padding: 10px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    .correct {
+      background-color: #8fda8f;
+    }
+
+    .incorrect {
+      background-color: #f39494;
+    }
+
+    .next-button {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .results {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    .d-none {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+<div class="p-5 bg-primary text-white text-center">
+  <h1>Тест: Крестики-нолики</h1>
+  <p>Изучите историю, проверьте знания и протестируйте!</p> 
+</div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="X_O_main.html">История</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="X_O_test.html">Тест</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="X_O_play.html">Игра</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="question-container" id="questionContainer1">
+    <div class="question">Вопрос 1: Как игра "Крестики-нолики" называлась раньше?</div>
+    <div class="answer-grid" id="answers1">
+      <div class="answer" data-correct="true">A. Хрестики-оники</div>
+      <div class="answer">B. Нолики-крестики</div>
+      <div class="answer">C. Умножение-деление</div>
+      <div class="answer">D. Ха и О</div>
+    </div>
+    <button class="next-button" onclick="showNextQuestion(1)">Далее</button>
+  </div>
+
+  <div class="question-container d-none" id="questionContainer2">
+    <div class="question">Вопрос 2: В каком году была орфографическая реформа, "переименовавшая игру"?</div>
+    <div class="answer-grid" id="answers2">
+      <div class="answer">A. 1835</div>
+      <div class="answer">B. 1819</div>
+      <div class="answer" data-correct="true">C. 1918</div>
+      <div class="answer">D. 2004</div>
+    </div>
+    <button class="next-button" onclick="showNextQuestion(2)">Далее</button>
+  </div>
+
+  <div class="question-container d-none" id="questionContainer3">
+    <div class="question">Вопрос 3: Какую игру сделал создатель крестиков-ноликов в Индии из неё?</div>
+    <div class="answer-grid" id="answers3">
+      <div class="answer">A. Шашки</div>
+      <div class="answer">B. Нарды</div>
+      <div class="answer" >C. Сапер</div>
+      <div class="answer" data-correct="true">D. Шахматы</div>
+    </div>
+    <button class="next-button" onclick="showNextQuestion(3)">Далее</button>
+  </div>
+
+  <div class="question-container d-none" id="questionContainer4">
+    <div class="question">Вопрос 4: Как раньше называли Х и О?</div>
+    <div class="answer-grid" id="answers4">
+      <div class="answer">A. "хрен" и "огурец"</div>
+      <div class="answer" data-correct="true">B. "херъ" и "оно"</div>
+      <div class="answer" >C. "хаха" и "охох"</div>
+      <div class="answer" >D. "икс" и "омега"</div>
+    </div>
+    <button class="next-button" onclick="showNextQuestion(4)">Далее</button>
+  </div>
+
+  <div class="question-container d-none" id="questionContainer5">
+    <div class="question">Вопрос 5: Кто запретил крестики-нолики из-за пропуска важных мероприятий, таких как казнь?</div>
+    <div class="answer-grid" id="answers5">
+      <div class="answer">A. Путин В.В.</div>
+      <div class="answer" >B.Президент Франции и Президент Индии</div>
+      <div class="answer" data-correct="true">C. Церковь</div>
+      <div class="answer" >D. Парламент</div>
+    </div>
+    <button class="next-button" onclick="showNextQuestion(5)">Далее</button>
+  </div>
+
+  <div class="results d-none" id="results">
+    <p>Правильные ответы: <span id="correctCount">0</span></p>
+    <p>Неправильные ответы: <span id="incorrectCount">0</span></p>
+  </div>
+</main>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const questionContainers = document.querySelectorAll('.question-container');
+    const nextButtons = document.querySelectorAll('.next-button');
+    const resultsContainer = document.getElementById('results');
+    const correctCountElement = document.getElementById('correctCount');
+    const incorrectCountElement = document.getElementById('incorrectCount');
+
+    let correctCount = 0;
+    let incorrectCount = 0;
+    let currentQuestion = 0;
+
+    function showNextQuestion() {
+      // Найти текущий вопрос и скрыть его
+      const currentContainer = document.getElementById(`questionContainer${currentQuestion + 1}`);
+      currentContainer.classList.add('d-none');
+
+      // Перейти к следующему вопросу
+      currentQuestion++;
+
+      // Показать следующий вопрос или результаты, если вопросы закончились
+      if (currentQuestion < questionContainers.length) {
+        const nextContainer = document.getElementById(`questionContainer${currentQuestion + 1}`);
+        nextContainer.classList.remove('d-none');
+      } else {
+        showResults();
+      }
+    }
+
+    function showResults() {
+      resultsContainer.classList.remove('d-none');
+      correctCountElement.textContent = correctCount;
+      incorrectCountElement.textContent = incorrectCount;
+    }
+
+    // Добавить обработчик для всех кнопок "Далее"
+    nextButtons.forEach(button => {
+      button.addEventListener('click', showNextQuestion);
+    });
+
+    // Добавить обработчик для всех вариантов ответа
+    questionContainers.forEach(container => {
+      const answers = container.querySelectorAll('.answer');
+      answers.forEach(answer => {
+        answer.addEventListener('click', function () {
+          const isCorrect = answer.dataset.correct === 'true';
+
+          if (isCorrect) {
+            answer.classList.add('correct');
+            correctCount++;
+          } else {
+            answer.classList.add('incorrect');
+            const correctAnswer = container.querySelector('.answer[data-correct="true"]');
+            correctAnswer.classList.add('correct');
+            incorrectCount++;
+          }
+
+          // Отключить кнопку "Далее", чтобы избежать повторных нажатий
+          nextButtons[currentQuestion - 1].disabled = true;
+        });
+      });
+    });
+  });
+</script>
+
+
+<div class="mt-5 p-4 bg-dark text-white text-center">
+  <p>Сайт создан тг-каналом "фыркающий программист 🦊" при поддержке энергетика и сникерса</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Fr-Fr-Fr-PROg</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+  <link href="https://cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+  <style>
+    body {
+        background-color: #111;
+        color: #fff;
+        font-family: 'Verdana', sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    header {
+        padding: 20px;
+        text-align: center;
+    }
+
+    h1 {
+        color: #bb86fc;
+        font-family: 'Verdana', sans-serif;
+        margin: 0;
+        font-size: 2em;
+    }
+
+    .blogs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .blog {
+        width: calc(16.66% - 20px);
+        background-color: #000; /* Черный фон */
+        border: 4px solid transparent; /* Непрозрачные рамки */
+        padding: 10px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 20px;
+        margin: 10px;
+    }
+
+    .blog h1, .blog p {
+        margin: 0;
+        font-size: 18px;
+        transition: color 0.3s ease;
+        font-family: 'Verdana', sans-serif;
+    }
+
+    .blog:hover {
+        box-shadow: 0 0 10px #bb86fc, 0 0 20px #bb86fc, 0 0 30px #bb86fc, 0 0 40px #bb86fc, 0 0 50px #bb86fc;
+    }
+
+    /* Неоновый эффект для рамок блога */
+    .blog::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-shadow: 
+            0 0 10px #bb86fc, 
+            0 0 20px #bb86fc, 
+            0 0 30px #bb86fc, 
+            0 0 40px #bb86fc, 
+            0 0 50px #bb86fc,
+           
+        opacity: 0;
+        border-radius: 20px;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .blog:hover::before {
+        opacity: 1;
+    }
+
+    /* Отключение "внутреннего свечения" */
+    .featherlight .featherlight-content {
+        background: none;
+        box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Fr-Fr-Fr-PROg</h1>
+</header>
+
+<div class="blogs"></div>
+
+<script>
+  const BLOG_LIST = document.querySelector('.blogs');
+
+  fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'GET',
+  })
+  .then((response) => response.json())
+  .then((json) => json.forEach((blog) => add_blog(blog)));
+
+  function add_blog(blog) {
+      let new_blog = document.createElement('div');
+      new_blog.classList.add('blog');
+
+      let new_blog_title = document.createElement('h1');
+      let new_blog_body = document.createElement('p');
+
+      new_blog_title.textContent = blog['title'];
+      new_blog_body.textContent = blog['body'];
+
+      new_blog.appendChild(new_blog_title);
+      new_blog.appendChild(new_blog_body);
+
+      BLOG_LIST.appendChild(new_blog);
+  }
+
+  // Добавление скрипта для featherlight.js (lightbox)
+  $(document).ready(function() {
+      $('.blog').click(function() {
+          $.featherlight($(this).html(), {
+              variant: 'featherlight-neon'
+          });
+      });
+  });
+</script>
+
+</body>
+</html>
